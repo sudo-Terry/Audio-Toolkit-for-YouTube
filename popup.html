@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        width: 240px;
+        margin: 0;
+        padding: 14px 16px;
+        background: #1c1c1e;
+        color: #fff;
+        font-family: "Noto Sans KR", Arial, sans-serif;
+        font-size: 13px;
+      }
+      h1 {
+        font-size: 14px;
+        margin: 0 0 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .row {
+        margin: 12px 0;
+      }
+      .row > label {
+        display: block;
+        margin-bottom: 6px;
+        color: #e6e6e6;
+      }
+      .row > label b {
+        float: right;
+        color: #ff5c5c;
+      }
+      input[type="range"] {
+        width: 100%;
+        accent-color: #ff5c5c;
+      }
+      .check label {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        cursor: pointer;
+      }
+      input[type="checkbox"] {
+        accent-color: #ff5c5c;
+        width: 16px;
+        height: 16px;
+      }
+      .hint {
+        margin-top: 12px;
+        color: #888;
+        font-size: 11px;
+        line-height: 1.5;
+      }
+      button {
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 5px 10px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      🎧 Audio Toolkit
+      <input type="checkbox" id="enabled" title="전체 On/Off" />
+    </h1>
+
+    <div class="row">
+      <label>볼륨 부스트 <b id="boost-val">100%</b></label>
+      <input type="range" id="boost" min="100" max="500" step="10" value="100" />
+    </div>
+
+    <div class="row">
+      <label>좌우 밸런스 <b id="balance-val">중앙</b></label>
+      <input type="range" id="balance" min="-100" max="100" step="5" value="0" />
+    </div>
+
+    <div class="row check">
+      <label><input type="checkbox" id="compressor" /> 컴프레서 (야간 모드)</label>
+    </div>
+
+    <div class="row check">
+      <label><input type="checkbox" id="mono" /> 모노 병합</label>
+    </div>
+
+    <div class="row" style="text-align: right">
+      <button id="reset">초기화</button>
+    </div>
+
+    <p class="hint">유튜브 재생 중인 탭에 실시간 적용됩니다. 플레이어 컨트롤바의 막대 아이콘으로도 조절할 수 있어요.</p>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

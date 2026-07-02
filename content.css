@@ -1,0 +1,128 @@
+/* YouTube Audio Toolkit — 인-플레이어 UI */
+
+.yat-button svg {
+  transform: scale(1);
+  transition: opacity 0.1s;
+}
+.yat-button:hover svg {
+  opacity: 0.85;
+}
+
+.yat-panel {
+  position: absolute;
+  right: 12px;
+  bottom: 60px;
+  z-index: 2147483647;
+  width: 260px;
+  padding: 14px 16px;
+  background: rgba(28, 28, 30, 0.96);
+  color: #fff;
+  border-radius: 12px;
+  font-family: "Roboto", "Noto Sans KR", Arial, sans-serif;
+  font-size: 13px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  user-select: none;
+}
+
+.yat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.yat-row {
+  margin: 12px 0;
+}
+
+.yat-row > label {
+  display: block;
+  margin-bottom: 6px;
+  color: #e6e6e6;
+}
+
+.yat-row > label b {
+  float: right;
+  color: #ff5c5c;
+  font-weight: 600;
+}
+
+.yat-row input[type="range"] {
+  width: 100%;
+  accent-color: #ff5c5c;
+  cursor: pointer;
+}
+
+.yat-check label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #e6e6e6;
+}
+
+.yat-check input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #ff5c5c;
+  cursor: pointer;
+}
+
+.yat-footer {
+  margin-top: 14px;
+  text-align: right;
+}
+
+.yat-footer button {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.yat-footer button:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* 토글 스위치 */
+.yat-switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 20px;
+}
+.yat-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.yat-slider-toggle {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #555;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+.yat-slider-toggle::before {
+  content: "";
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.yat-switch input:checked + .yat-slider-toggle {
+  background: #ff5c5c;
+}
+.yat-switch input:checked + .yat-slider-toggle::before {
+  transform: translateX(18px);
+}

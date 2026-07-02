@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Audio Toolkit",
+  "version": "0.1.0",
+  "description": "유튜브 오디오에 볼륨 부스트, 컴프레서(야간 모드), 모노 병합, 좌우 밸런스를 적용하는 간편 음향 도구.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://m.youtube.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*", "https://m.youtube.com/*"],
+      "js": [
+        "src/settings.js",
+        "src/audio-engine.js",
+        "src/ui-panel.js",
+        "src/main.js"
+      ],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "YouTube Audio Toolkit",
+    "default_popup": "popup.html"
+  }
+}
