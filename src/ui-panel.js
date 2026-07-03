@@ -49,6 +49,7 @@
 
   function buildPanel() {
     const s = NS.settings;
+    const TIPS = NS.TIPS;
 
     panelEl = document.createElement("div");
     panelEl.className = "yat-panel";
@@ -65,12 +66,12 @@
       </div>
 
       <div class="yat-row">
-        <label>볼륨 부스트 <b id="yat-boost-val">${s.boost}%</b></label>
+        <label>볼륨 부스트 <span class="yat-help" data-tip="${TIPS.boost}">?</span> <b id="yat-boost-val">${s.boost}%</b></label>
         <input type="range" id="yat-boost" min="100" max="200" step="5" value="${s.boost}">
       </div>
 
       <div class="yat-row">
-        <label>좌우 밸런스 <b id="yat-balance-val">${NS.balanceLabel(s.balance)}</b></label>
+        <label>좌우 밸런스 <span class="yat-help" data-tip="${TIPS.balance}">?</span> <b id="yat-balance-val">${NS.balanceLabel(s.balance)}</b></label>
         <div class="yat-balance-ctrl">
           <button class="yat-nudge" id="yat-bal-minus" title="왼쪽으로 5">−</button>
           <input type="range" id="yat-balance" min="-100" max="100" step="5" value="${s.balance}">
@@ -79,11 +80,11 @@
       </div>
 
       <div class="yat-row yat-check">
-        <label><input type="checkbox" id="yat-compressor" ${s.compressor ? "checked" : ""}> 컴프레서 (야간 모드)</label>
+        <label><input type="checkbox" id="yat-compressor" ${s.compressor ? "checked" : ""}> 컴프레서 (야간 모드) <span class="yat-help" data-tip="${TIPS.compressor}">?</span></label>
       </div>
 
       <div class="yat-row yat-check">
-        <label><input type="checkbox" id="yat-mono" ${s.mono ? "checked" : ""}> 모노 병합</label>
+        <label><input type="checkbox" id="yat-mono" ${s.mono ? "checked" : ""}> 모노 병합 <span class="yat-help" data-tip="${TIPS.mono}">?</span></label>
       </div>
 
       <div class="yat-footer">

@@ -22,6 +22,51 @@
       }
       .row {
         margin: 12px 0;
+        position: relative;
+      }
+      .row:hover {
+        z-index: 10;
+      }
+      .help {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 15px;
+        height: 15px;
+        margin-left: 4px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        color: #ddd;
+        font-size: 10px;
+        font-weight: 700;
+        cursor: help;
+        vertical-align: middle;
+      }
+      .help::after {
+        content: attr(data-tip);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        margin-top: 6px;
+        background: #000;
+        color: #fff;
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 1.5;
+        text-align: left;
+        white-space: normal;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.12s;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+        pointer-events: none;
+      }
+      .help:hover::after {
+        opacity: 1;
+        visibility: visible;
       }
       .row > label {
         display: block;
@@ -110,12 +155,12 @@
     </h1>
 
     <div class="row">
-      <label>볼륨 부스트 <b id="boost-val">100%</b></label>
+      <label>볼륨 부스트 <span class="help" data-tip="영상 소리 자체가 너무 작을 때 사용하세요. 유튜브 기본 100%를 넘어 최대 200%까지 키웁니다.">?</span> <b id="boost-val">100%</b></label>
       <input type="range" id="boost" min="100" max="200" step="5" value="100" />
     </div>
 
     <div class="row">
-      <label>좌우 밸런스 <b id="balance-val">중앙</b></label>
+      <label>좌우 밸런스 <span class="help" data-tip="소리가 한쪽으로 치우쳐 들릴 때 좌우 균형을 맞춥니다. 왼쪽/오른쪽 버튼으로 미세 조정할 수 있어요.">?</span> <b id="balance-val">중앙</b></label>
       <div class="balance-ctrl">
         <button class="nudge" id="bal-minus" title="왼쪽으로 5">−</button>
         <input type="range" id="balance" min="-100" max="100" step="5" value="0" />
@@ -124,11 +169,11 @@
     </div>
 
     <div class="row check">
-      <label><input type="checkbox" id="compressor" /> 컴프레서 (야간 모드)</label>
+      <label><input type="checkbox" id="compressor" /> 컴프레서 (야간 모드) <span class="help" data-tip="큰 소리와 작은 소리의 차이가 클 때 켜세요. 광고·효과음의 볼륨 튐을 눌러 밤에도 편하게 들을 수 있습니다.">?</span></label>
     </div>
 
     <div class="row check">
-      <label><input type="checkbox" id="mono" /> 모노 병합</label>
+      <label><input type="checkbox" id="mono" /> 모노 병합 <span class="help" data-tip="좌우 채널을 하나로 합칩니다. 한쪽 이어폰만 끼거나, 좌우 분리가 어색한 영상에서 유용합니다.">?</span></label>
     </div>
 
     <div class="row" style="text-align: right">
