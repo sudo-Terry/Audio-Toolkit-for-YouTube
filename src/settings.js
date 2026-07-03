@@ -12,7 +12,7 @@
 
   NS.DEFAULTS = Object.freeze({
     enabled: true, // 마스터 On/Off (Off = 원음 그대로 통과)
-    boost: 100, // 볼륨 % (100 = 기본, 최대 500)
+    boost: 100, // 볼륨 % (100 = 기본, 최대 200)
     compressor: false, // 야간 모드
     mono: false, // 모노 병합
     balance: 0, // 좌우 밸런스 (-100 왼쪽 ~ +100 오른쪽)
@@ -20,12 +20,19 @@
 
   NS.settings = { ...NS.DEFAULTS };
 
+  // 범위를 벗어난 저장값 보정(예: 이전 버전에서 저장된 boost 500)
+  NS.normalize = function (s) {
+    s.boost = NS.clamp(Number(s.boost) || 100, 100, 200);
+    s.balance = NS.clamp(Number(s.balance) || 0, -100, 100);
+    return s;
+  };
+
   NS.loadSettings = function () {
     return new Promise((resolve) => {
       try {
         chrome.storage.local.get(NS.STORAGE_KEY, (res) => {
           if (res && res[NS.STORAGE_KEY]) {
-            NS.settings = { ...NS.DEFAULTS, ...res[NS.STORAGE_KEY] };
+            NS.settings = NS.normalize({ ...NS.DEFAULTS, ...res[NS.STORAGE_KEY] });
           }
           resolve();
         });

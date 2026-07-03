@@ -38,9 +38,10 @@ popup.html / popup.js  # 확장 아이콘 팝업 (동일 설정을 storage로 �
   `const YAT` top-level 선언은 재선언 에러라 금지. 로드 순서 `settings → ui-panel → main`, main 마지막.
 - **오디오 체인**: `video → source → [compressor] → gain → panner → [mono] → destination`.
   gain 은 컴프레서 "뒤"의 makeup gain(cheese-knife 참고 토폴로지) — 압축으로 큰 소리를 누른 뒤 음량 보정.
-  컴프레서 프리셋: threshold -50 / knee 40 / ratio 12 / attack 0 / release 0.25.
-  활성 노드만 순서대로 연결하며 변경 시 `rebuildGraph()`로 재구성. 새 음향 기능은 이 체인 중간에
-  노드를 끼워 확장한다(예: EQ = `BiquadFilterNode` peaking 체인). **오디오 로직은 audio-engine.js(MAIN)에만** 둔다.
+  컴프레서 프리셋: threshold -50 / knee 40 / ratio 12 / attack 0 / release 0.25. boost 는 100~200%.
+  video 마다 개별 그래프를 만들어 `graphs` Map(video → 노드 묶음)으로 관리하고, 설정 변경 시
+  `applyAll()`이 전 그래프를 재구성한다. 새 음향 기능은 체인 중간에 노드를 끼워 확장한다
+  (예: EQ = `BiquadFilterNode` peaking 체인). **오디오 로직은 audio-engine.js(MAIN)에만** 둔다.
 - **설정 변경 흐름**: UI/popup 이 `NS.settings` 수정 → `NS.commit()`(저장 + broadcast).
   `saveSettings()` 는 `NS._selfWrite=true` 를 세워, `main.js` 의 `storage.onChanged` 가
   자기 트리거를 무시하게 한다(패널 포커스 유지). 외부(popup) 변경만 `NS.syncPanel()` 로 반영.
@@ -49,10 +50,13 @@ popup.html / popup.js  # 확장 아이콘 팝업 (동일 설정을 storage로 �
 
 - **오디오는 반드시 MAIN 월드에서.** 격리 월드에서 `createMediaElementSource` 를 호출하면
   소리에 영향이 없다. audio-engine.js 를 격리 월드로 되돌리지 말 것.
-- `createMediaElementSource` 는 **video 요소당 1회만** 호출 가능 → `hookedVideos` WeakSet 으로 추적.
-- 유튜브는 SPA라 페이지 전환 시 DOM이 바뀜 → `yt-navigate-finish` + `MutationObserver`
-  로 video 재연결·버튼 재주입. MutationObserver 는 이미 연결된 경우 `apply()` 를 재실행하지 않는다.
-- autoplay 정책상 `AudioContext` 는 사용자 상호작용 후 `resume()` 필요.
+- **video 는 `play` 이벤트(document 캡처)로 잡는다.** 유튜브에는 video 가 여러 개
+  (본 영상, 인라인 미리보기, Shorts)라 로드 시점 `querySelector("video")` 로는 엉뚱한
+  요소에 붙어 "소리는 정상인데 효과 없음"이 된다. 실제로 재생되는 요소만 hook 할 것.
+  (play 는 버블링하지 않지만 캡처 단계에서는 document 에 도달한다.)
+- `createMediaElementSource` 는 **video 요소당 1회만** 호출 가능 → `graphs` Map 존재 여부로 중복 방지.
+- 유튜브는 SPA라 페이지 전환 시 DOM이 바뀜 → 버튼 재주입은 `yt-navigate-finish` + `MutationObserver`(격리 월드).
+- autoplay 정책상 `AudioContext` 는 사용자 상호작용 후 `resume()` 필요 → play/pointerdown/keydown 에서 resume.
 - 패널은 `body` 에 `position: fixed` 로 붙인다(플레이어 DOM 변화·컨트롤 자동숨김의 영향 회피).
   패널 내부 이벤트는 `stopPropagation` 으로 플레이어 단축키/재생 토글에 새지 않게 한다.
 

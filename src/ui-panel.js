@@ -66,7 +66,7 @@
 
       <div class="yat-row">
         <label>볼륨 부스트 <b id="yat-boost-val">${s.boost}%</b></label>
-        <input type="range" id="yat-boost" min="100" max="500" step="10" value="${s.boost}">
+        <input type="range" id="yat-boost" min="100" max="200" step="5" value="${s.boost}">
       </div>
 
       <div class="yat-row">

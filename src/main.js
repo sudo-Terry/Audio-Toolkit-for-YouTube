@@ -39,7 +39,7 @@
         NS._selfWrite = false;
         return;
       }
-      NS.settings = { ...NS.DEFAULTS, ...changes[NS.STORAGE_KEY].newValue };
+      NS.settings = NS.normalize({ ...NS.DEFAULTS, ...changes[NS.STORAGE_KEY].newValue });
       NS.broadcast();
       NS.syncPanel();
     });

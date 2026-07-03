@@ -33,6 +33,8 @@ function save() {
 
 chrome.storage.local.get(STORAGE_KEY, (res) => {
   if (res && res[STORAGE_KEY]) settings = { ...DEFAULTS, ...res[STORAGE_KEY] };
+  // 이전 버전에서 저장된 범위 밖 값 보정 (예: boost 500)
+  settings.boost = Math.max(100, Math.min(200, Number(settings.boost) || 100));
   render();
 });
 

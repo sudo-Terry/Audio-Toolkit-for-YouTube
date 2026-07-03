@@ -20,7 +20,7 @@ Volume boost · compressor · mono merge · stereo balance — right inside the 
 
 | Feature | Description |
 | --- | --- |
-| 🔊 **Volume Boost** | Amplify beyond YouTube's 100% cap, up to 500% |
+| 🔊 **Volume Boost** | Amplify beyond YouTube's 100% cap, up to 200% |
 | 🌙 **Compressor (Night Mode)** | Tame loud peaks for comfortable late-night listening |
 | 🎚️ **Stereo Balance** | Adjust the L/R balance |
 | 🔉 **Mono Merge** | Collapse both channels to mono (for single-earbud use) |
