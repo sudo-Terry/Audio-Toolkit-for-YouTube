@@ -52,6 +52,14 @@ $("balance").addEventListener("input", (e) => {
   $("balance-val").textContent = balanceLabel(settings.balance);
   save();
 });
+const nudgeBalance = (delta) => {
+  settings.balance = Math.max(-100, Math.min(100, settings.balance + delta));
+  $("balance").value = settings.balance;
+  $("balance-val").textContent = balanceLabel(settings.balance);
+  save();
+};
+$("bal-minus").addEventListener("click", () => nudgeBalance(-5));
+$("bal-plus").addEventListener("click", () => nudgeBalance(5));
 $("compressor").addEventListener("change", (e) => {
   settings.compressor = e.target.checked;
   save();
@@ -65,3 +73,4 @@ $("reset").addEventListener("click", () => {
   render();
   save();
 });
+$("close").addEventListener("click", () => window.close());

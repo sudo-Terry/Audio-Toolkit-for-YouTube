@@ -27,7 +27,9 @@
     }
   ],
   "action": {
-    "default_title": "YouTube Audio Toolkit",
-    "default_popup": "popup.html"
+    "default_title": "YouTube Audio Toolkit (클릭하여 열기)"
+  },
+  "background": {
+    "service_worker": "background.js"
   }
 }

@@ -71,7 +71,11 @@
 
       <div class="yat-row">
         <label>좌우 밸런스 <b id="yat-balance-val">${NS.balanceLabel(s.balance)}</b></label>
-        <input type="range" id="yat-balance" min="-100" max="100" step="5" value="${s.balance}">
+        <div class="yat-balance-ctrl">
+          <button class="yat-nudge" id="yat-bal-minus" title="왼쪽으로 5">−</button>
+          <input type="range" id="yat-balance" min="-100" max="100" step="5" value="${s.balance}">
+          <button class="yat-nudge" id="yat-bal-plus" title="오른쪽으로 5">+</button>
+        </div>
       </div>
 
       <div class="yat-row yat-check">
@@ -111,6 +115,14 @@
       $("#yat-balance-val").textContent = NS.balanceLabel(s.balance);
       NS.commit();
     });
+    const nudgeBalance = (delta) => {
+      s.balance = NS.clamp(s.balance + delta, -100, 100);
+      $("#yat-balance").value = s.balance;
+      $("#yat-balance-val").textContent = NS.balanceLabel(s.balance);
+      NS.commit();
+    };
+    $("#yat-bal-minus").addEventListener("click", () => nudgeBalance(-5));
+    $("#yat-bal-plus").addEventListener("click", () => nudgeBalance(5));
     $("#yat-compressor").addEventListener("change", (e) => {
       s.compressor = e.target.checked;
       NS.commit();

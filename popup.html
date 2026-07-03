@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <style>
       body {
-        width: 240px;
+        box-sizing: border-box;
+        width: 100%;
         margin: 0;
-        padding: 14px 16px;
+        padding: 16px 18px;
         background: #1c1c1e;
         color: #fff;
         font-family: "Noto Sans KR", Arial, sans-serif;
@@ -52,6 +53,29 @@
         font-size: 11px;
         line-height: 1.5;
       }
+      .balance-ctrl {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .balance-ctrl input[type="range"] {
+        flex: 1;
+      }
+      .nudge {
+        flex: none;
+        width: 22px;
+        height: 22px;
+        border: none;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 14px;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .nudge:hover {
+        background: rgba(255, 255, 255, 0.25);
+      }
       button {
         background: rgba(255, 255, 255, 0.12);
         color: #fff;
@@ -61,12 +85,28 @@
         font-size: 12px;
         cursor: pointer;
       }
+      .h1-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .close-btn {
+        padding: 3px 7px;
+        font-size: 13px;
+        line-height: 1;
+      }
+      .close-btn:hover {
+        background: rgba(255, 92, 92, 0.85);
+      }
     </style>
   </head>
   <body>
     <h1>
       🎧 Audio Toolkit
-      <input type="checkbox" id="enabled" title="전체 On/Off" />
+      <span class="h1-right">
+        <input type="checkbox" id="enabled" title="전체 On/Off" />
+        <button id="close" class="close-btn" title="닫기">✕</button>
+      </span>
     </h1>
 
     <div class="row">
@@ -76,7 +116,11 @@
 
     <div class="row">
       <label>좌우 밸런스 <b id="balance-val">중앙</b></label>
-      <input type="range" id="balance" min="-100" max="100" step="5" value="0" />
+      <div class="balance-ctrl">
+        <button class="nudge" id="bal-minus" title="왼쪽으로 5">−</button>
+        <input type="range" id="balance" min="-100" max="100" step="5" value="0" />
+        <button class="nudge" id="bal-plus" title="오른쪽으로 5">+</button>
+      </div>
     </div>
 
     <div class="row check">

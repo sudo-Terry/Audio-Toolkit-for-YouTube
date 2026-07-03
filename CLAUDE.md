@@ -19,8 +19,14 @@ src/
   ui-panel.js          # [격리] 컨트롤바 버튼 + 설정 패널 (injectButton, syncPanel)
   main.js              # [격리] 진입점: init, SPA 네비게이션, storage 동기화, MAIN 월드 통신
   audio-engine.js      # [MAIN] Web Audio 그래프 구성/적용 (postMessage 로 설정 수신)
-popup.html / popup.js  # 확장 아이콘 팝업 (동일 설정을 storage로 공유)
+background.js          # 서비스 워커: 툴바 아이콘 클릭 → popup.html 을 독립 창으로 오픈
+popup.html / popup.js  # 설정 창 (독립 window, 동일 설정을 storage로 공유)
 ```
+
+- **툴바 팝업은 독립 창(detached window)이다.** 크롬 앵커형 action popup 은 포커스를
+  잃으면 강제로 닫혀 이를 막을 API 가 없다. 그래서 `default_popup` 을 쓰지 않고,
+  `background.js` 가 `action.onClicked` 에서 `chrome.windows.create({type:"popup"})` 로
+  popup.html 을 연다. blur 로 닫히지 않고 ✕/창 닫기로만 닫힌다. 재오픈 시 기존 창을 포커스.
 
 ## 아키텍처 규칙
 

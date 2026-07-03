@@ -41,16 +41,41 @@
 }
 
 .yat-close {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.12);
   border: none;
-  color: #aaa;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 7px;
+}
+.yat-close:hover {
+  background: rgba(255, 92, 92, 0.85);
+}
+
+.yat-balance-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.yat-balance-ctrl input[type="range"] {
+  flex: 1;
+}
+.yat-nudge {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
   font-size: 14px;
   line-height: 1;
   cursor: pointer;
-  padding: 2px 4px;
 }
-.yat-close:hover {
-  color: #fff;
+.yat-nudge:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .yat-row {
