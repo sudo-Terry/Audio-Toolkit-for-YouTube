@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎧 YouTube Audio Toolkit
+# 🎧 Audio Toolkit for YouTube
 
 **A Chrome extension that fine-tunes YouTube audio in real time**
 

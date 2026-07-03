@@ -65,7 +65,6 @@
       const g = { source, comp, gain, panner, mono };
       graphs.set(video, g);
       applyGraph(g);
-      console.log("[YAT] video 연결 완료 (ctx:", audioCtx.state + ")");
       return g;
     } catch (e) {
       console.warn("[YAT] video 연결 실패:", e);
@@ -151,5 +150,4 @@
 
   // 로드 직후 현재 설정을 요청(격리 월드가 응답)
   window.postMessage({ __yat: true, type: "request" }, "*");
-  console.log("[YAT] audio engine 로드됨 (MAIN world)");
 })();

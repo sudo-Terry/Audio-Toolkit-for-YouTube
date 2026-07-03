@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎧 YouTube Audio Toolkit
+# 🎧 Audio Toolkit for YouTube
 
 **유튜브 오디오를 실시간으로 다듬는 크롬 확장 프로그램**
 

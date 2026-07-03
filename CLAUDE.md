@@ -4,7 +4,7 @@
 
 ## 프로젝트
 
-**YouTube Audio Toolkit** — 유튜브 오디오를 Web Audio API로 가로채 간단한 음향 조정을
+**Audio Toolkit for YouTube** — 유튜브 오디오를 Web Audio API로 가로채 간단한 음향 조정을
 제공하는 Manifest V3 크롬 확장 프로그램. 번들러·프레임워크 없이 **순수 JS(Vanilla)** 로 작성한다.
 
 기능: 볼륨 부스트 · 컴프레서(야간 모드) · 모노 병합 · 좌우 밸런스 · 마스터 On/Off.
