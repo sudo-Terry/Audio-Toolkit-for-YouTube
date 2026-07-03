@@ -37,7 +37,7 @@ Volume boost · compressor · mono merge · stereo balance — right inside the 
 
 While a YouTube video is playing, click the **bars icon** in the player control bar to open
 the settings panel. You can also use the extension's toolbar popup — both UIs share settings
-in real time.
+in real time. Hover the **`?` icon** next to each feature for a short usage hint.
 
 ## Tech
 
@@ -45,6 +45,15 @@ in real time.
 - Taps `<video>` audio via the **Web Audio API**
   `video → [compressor] → gain → panner → [mono] → destination`
 
+## Privacy
+
+No user data is collected or transmitted. Settings are stored locally in your browser only.
+See the [Privacy Policy](PRIVACY.md) for details.
+
 ## License
 
 [MIT](LICENSE)
+
+---
+
+<div align="center"><sub>Not affiliated with or endorsed by YouTube or Google.</sub></div>
