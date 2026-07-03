@@ -13,11 +13,16 @@
       "matches": ["https://www.youtube.com/*", "https://m.youtube.com/*"],
       "js": [
         "src/settings.js",
-        "src/audio-engine.js",
         "src/ui-panel.js",
         "src/main.js"
       ],
       "css": ["content.css"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.youtube.com/*", "https://m.youtube.com/*"],
+      "js": ["src/audio-engine.js"],
+      "world": "MAIN",
       "run_at": "document_idle"
     }
   ],

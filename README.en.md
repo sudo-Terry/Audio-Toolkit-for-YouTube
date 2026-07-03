@@ -43,7 +43,7 @@ in real time.
 
 - **Manifest V3** · Vanilla JavaScript (no dependencies)
 - Taps `<video>` audio via the **Web Audio API**
-  `video → gain → [compressor] → panner → [mono] → destination`
+  `video → [compressor] → gain → panner → [mono] → destination`
 
 ## License
 

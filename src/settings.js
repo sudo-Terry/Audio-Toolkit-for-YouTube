@@ -35,18 +35,27 @@
     });
   };
 
+  // 이 컨텍스트가 방금 쓴 변경인지 표시(storage.onChanged 자기 트리거 무시용)
+  NS._selfWrite = false;
+
   NS.saveSettings = function () {
     try {
+      NS._selfWrite = true;
       chrome.storage.local.set({ [NS.STORAGE_KEY]: NS.settings });
     } catch (e) {
       /* 확장 컨텍스트 무효화 시 무시 */
     }
   };
 
+  // MAIN 월드 오디오 엔진으로 현재 설정 전달
+  NS.broadcast = function () {
+    window.postMessage({ __yat: true, type: "settings", settings: NS.settings }, "*");
+  };
+
   // 설정 변경 후 저장 + 오디오 반영을 한 번에
   NS.commit = function () {
     NS.saveSettings();
-    if (NS.apply) NS.apply();
+    NS.broadcast();
   };
 
   /* 공용 유틸 */

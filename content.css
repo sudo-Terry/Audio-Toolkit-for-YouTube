@@ -9,9 +9,9 @@
 }
 
 .yat-panel {
-  position: absolute;
-  right: 12px;
-  bottom: 60px;
+  position: fixed;
+  right: 20px;
+  bottom: 84px;
   z-index: 2147483647;
   width: 260px;
   padding: 14px 16px;
@@ -32,6 +32,25 @@
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 12px;
+}
+
+.yat-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.yat-close {
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+.yat-close:hover {
+  color: #fff;
 }
 
 .yat-row {

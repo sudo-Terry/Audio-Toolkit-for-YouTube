@@ -42,7 +42,7 @@
 
 - **Manifest V3** · 순수 JavaScript (의존성 없음)
 - **Web Audio API** 로 `<video>` 오디오를 가로채 처리
-  `video → gain → [compressor] → panner → [mono] → destination`
+  `video → [compressor] → gain → panner → [mono] → destination`
 
 ## 라이선스
 

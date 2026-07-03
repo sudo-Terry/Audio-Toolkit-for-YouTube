@@ -1,5 +1,9 @@
 /*
- * ui-panel.js — 플레이어 컨트롤바 버튼과 인-플레이어 설정 패널
+ * ui-panel.js — 컨트롤바 버튼 + 설정 패널 (격리 월드)
+ *
+ * 패널은 body 에 fixed 로 붙어 플레이어 DOM 변화의 영향을 받지 않는다.
+ * 설정 변경 시 패널을 재생성하지 않고 값만 동기화하여 포커스를 유지한다.
+ * 닫기는 토글 버튼 또는 × 버튼으로만 한다(임의로 닫히지 않음).
  */
 (() => {
   "use strict";
@@ -7,7 +11,6 @@
 
   let panelEl = null;
 
-  // 컨트롤바에 토글 버튼 주입
   NS.injectButton = function () {
     const controls = document.querySelector(".ytp-right-controls");
     if (!controls || document.querySelector(".yat-button")) return;
@@ -33,26 +36,32 @@
 
   function togglePanel() {
     if (panelEl && panelEl.isConnected) {
-      panelEl.remove();
-      panelEl = null;
-      return;
+      closePanel();
+    } else {
+      buildPanel();
     }
-    buildPanel();
+  }
+
+  function closePanel() {
+    if (panelEl) panelEl.remove();
+    panelEl = null;
   }
 
   function buildPanel() {
     const s = NS.settings;
-    const player = document.querySelector("#movie_player") || document.body;
 
     panelEl = document.createElement("div");
     panelEl.className = "yat-panel";
     panelEl.innerHTML = `
       <div class="yat-header">
         <span>🎧 Audio Toolkit</span>
-        <label class="yat-switch">
-          <input type="checkbox" id="yat-enabled" ${s.enabled ? "checked" : ""}>
-          <span class="yat-slider-toggle"></span>
-        </label>
+        <div class="yat-header-right">
+          <label class="yat-switch">
+            <input type="checkbox" id="yat-enabled" ${s.enabled ? "checked" : ""}>
+            <span class="yat-slider-toggle"></span>
+          </label>
+          <button class="yat-close" id="yat-close" title="닫기">✕</button>
+        </div>
       </div>
 
       <div class="yat-row">
@@ -77,10 +86,16 @@
         <button id="yat-reset">초기화</button>
       </div>
     `;
-    player.appendChild(panelEl);
-    panelEl.addEventListener("click", (e) => e.stopPropagation());
+    document.body.appendChild(panelEl);
+
+    // 패널 내부 상호작용이 플레이어(재생/단축키)로 새지 않도록 차단
+    ["click", "dblclick", "mousedown", "pointerdown", "keydown", "keyup"].forEach((type) =>
+      panelEl.addEventListener(type, (e) => e.stopPropagation())
+    );
 
     const $ = (sel) => panelEl.querySelector(sel);
+
+    $("#yat-close").addEventListener("click", closePanel);
 
     $("#yat-enabled").addEventListener("change", (e) => {
       s.enabled = e.target.checked;
@@ -107,20 +122,33 @@
     $("#yat-reset").addEventListener("click", () => {
       NS.settings = { ...NS.DEFAULTS };
       NS.commit();
-      rebuild();
+      NS.syncPanel();
     });
   }
 
-  function rebuild() {
+  // DOM 재생성 없이 열린 패널의 값만 갱신(포커스 중인 요소는 건드리지 않음)
+  NS.syncPanel = function () {
     if (!panelEl) return;
-    panelEl.remove();
-    panelEl = null;
-    buildPanel();
-  }
+    const s = NS.settings;
+    const active = document.activeElement;
+    const setVal = (sel, val) => {
+      const el = panelEl.querySelector(sel);
+      if (el && el !== active) el.value = val;
+    };
+    const setChk = (sel, on) => {
+      const el = panelEl.querySelector(sel);
+      if (el && el !== active) el.checked = on;
+    };
 
-  // 외부(popup 등)에서 설정이 바뀌면 오디오 반영 + 열린 패널 갱신
-  NS.onExternalChange = function () {
-    if (NS.apply) NS.apply();
-    if (panelEl) rebuild();
+    setVal("#yat-boost", s.boost);
+    setVal("#yat-balance", s.balance);
+    setChk("#yat-enabled", s.enabled);
+    setChk("#yat-compressor", s.compressor);
+    setChk("#yat-mono", s.mono);
+
+    const boostVal = panelEl.querySelector("#yat-boost-val");
+    if (boostVal) boostVal.textContent = s.boost + "%";
+    const balVal = panelEl.querySelector("#yat-balance-val");
+    if (balVal) balVal.textContent = NS.balanceLabel(s.balance);
   };
 })();
