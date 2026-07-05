@@ -13,20 +13,19 @@
 
 ```
 manifest.json          # MV3 설정. 콘텐츠 스크립트 js 배열의 "순서"가 로드 순서다.
-content.css            # 인-플레이어 버튼/패널 스타일
+content.css            # 컨트롤바 컴프레서 버튼 스타일
 src/
   settings.js          # [격리] 상태(DEFAULTS/settings) + chrome.storage + broadcast/commit/유틸
-  ui-panel.js          # [격리] 컨트롤바 버튼 + 설정 패널 (injectButton, syncPanel)
+  ui-panel.js          # [격리] 컨트롤바 컴프레서 토글 버튼 (injectButton, refreshButton)
   main.js              # [격리] 진입점: init, SPA 네비게이션, storage 동기화, MAIN 월드 통신
   audio-engine.js      # [MAIN] Web Audio 그래프 구성/적용 (postMessage 로 설정 수신)
-background.js          # 서비스 워커: 툴바 아이콘 클릭 → popup.html 을 독립 창으로 오픈
-popup.html / popup.js  # 설정 창 (독립 window, 동일 설정을 storage로 공유)
+popup.html / popup.js  # 툴바 아이콘 팝업 (볼륨·밸런스·모노·컴프레서 설정, storage 공유)
 ```
 
-- **툴바 팝업은 독립 창(detached window)이다.** 크롬 앵커형 action popup 은 포커스를
-  잃으면 강제로 닫혀 이를 막을 API 가 없다. 그래서 `default_popup` 을 쓰지 않고,
-  `background.js` 가 `action.onClicked` 에서 `chrome.windows.create({type:"popup"})` 로
-  popup.html 을 연다. blur 로 닫히지 않고 ✕/창 닫기로만 닫힌다. 재오픈 시 기존 창을 포커스.
+- **UI 는 두 갈래다.** 재생바에는 컴프레서(야간 모드) on/off **토글 버튼 하나만** 주입한다
+  (`.ytp-left-controls` 의 볼륨 영역 오른쪽, 켜지면 `.yat-on` 으로 빨간색). 볼륨 부스트·좌우 밸런스·모노 등
+  나머지 설정은 툴바 아이콘 **앵커형 팝업**(`action.default_popup`)에서 조절한다.
+  두 UI 는 `chrome.storage` 로 설정을 공유한다.
 
 ## 아키텍처 규칙
 
@@ -50,7 +49,7 @@ popup.html / popup.js  # 설정 창 (독립 window, 동일 설정을 storage로 
   (예: EQ = `BiquadFilterNode` peaking 체인). **오디오 로직은 audio-engine.js(MAIN)에만** 둔다.
 - **설정 변경 흐름**: UI/popup 이 `NS.settings` 수정 → `NS.commit()`(저장 + broadcast).
   `saveSettings()` 는 `NS._selfWrite=true` 를 세워, `main.js` 의 `storage.onChanged` 가
-  자기 트리거를 무시하게 한다(패널 포커스 유지). 외부(popup) 변경만 `NS.syncPanel()` 로 반영.
+  자기 트리거를 무시하게 한다. 외부(popup) 변경만 `NS.refreshButton()` 으로 컨트롤바 버튼에 반영.
 
 ## 주의사항 (Web Audio / 유튜브 SPA)
 
@@ -63,15 +62,14 @@ popup.html / popup.js  # 설정 창 (독립 window, 동일 설정을 storage로 
 - `createMediaElementSource` 는 **video 요소당 1회만** 호출 가능 → `graphs` Map 존재 여부로 중복 방지.
 - 유튜브는 SPA라 페이지 전환 시 DOM이 바뀜 → 버튼 재주입은 `yt-navigate-finish` + `MutationObserver`(격리 월드).
 - autoplay 정책상 `AudioContext` 는 사용자 상호작용 후 `resume()` 필요 → play/pointerdown/keydown 에서 resume.
-- 패널은 `body` 에 `position: fixed` 로 붙인다(플레이어 DOM 변화·컨트롤 자동숨김의 영향 회피).
-  패널 내부 이벤트는 `stopPropagation` 으로 플레이어 단축키/재생 토글에 새지 않게 한다.
+- 컨트롤바 버튼 클릭 시 `stopPropagation` 으로 플레이어 재생 토글에 새지 않게 한다.
 
 ## 로드 / 테스트
 
 빌드 단계 없음. `chrome://extensions` → 개발자 모드 → **압축해제된 확장 프로그램 로드** →
 이 폴더 선택. 코드 수정 후에는 확장 카드의 **새로고침** 버튼을 눌러 반영한다.
 
-자동화 테스트는 없다. 검증은 유튜브 영상 재생 후 컨트롤바 막대 아이콘 패널에서 직접 확인한다.
+자동화 테스트는 없다. 검증은 유튜브 영상 재생 후 컨트롤바 컴프레서 버튼과 툴바 팝업에서 직접 확인한다.
 JS 문법만 빠르게 볼 때는 `node -c src/<파일>.js`.
 
 ## 컨벤션

@@ -35,9 +35,12 @@ Volume boost · compressor · mono merge · stereo balance — right inside the 
 
 ## Usage
 
-While a YouTube video is playing, click the **bars icon** in the player control bar to open
-the settings panel. You can also use the extension's toolbar popup — both UIs share settings
-in real time. Hover the **`?` icon** next to each feature for a short usage hint.
+- **Compressor (night mode)** toggles right from the **compress icon button** in the player
+  control bar (turns red when on).
+- **Volume boost, stereo balance, and mono merge** are adjusted from the toolbar popup
+  (click the extension icon).
+- Both UIs share settings in real time. Hover the **`?` icon** next to each feature in the
+  popup for a short usage hint.
 
 ## Tech
 

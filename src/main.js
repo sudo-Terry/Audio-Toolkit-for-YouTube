@@ -41,7 +41,7 @@
       }
       NS.settings = NS.normalize({ ...NS.DEFAULTS, ...changes[NS.STORAGE_KEY].newValue });
       NS.broadcast();
-      NS.syncPanel();
+      NS.refreshButton();
     });
   } catch (e) {}
 
