@@ -5,7 +5,7 @@
     <style>
       body {
         box-sizing: border-box;
-        width: 280px;
+        width: 320px;
         margin: 0;
         padding: 16px 18px;
         background: #1c1c1e;
@@ -14,11 +14,29 @@
         font-size: 13px;
       }
       h1 {
-        font-size: 14px;
+        font-size: 13.5px;
         margin: 0 0 12px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 8px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        min-width: 0;
+      }
+      .brand-icon {
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        flex: none;
+      }
+      .brand > span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .row {
         margin: 12px 0;
@@ -134,6 +152,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        flex: none;
       }
       .close-btn {
         padding: 3px 7px;
@@ -147,7 +166,10 @@
   </head>
   <body>
     <h1>
-      🎧 Audio Toolkit
+      <span class="brand">
+        <img src="icons/icon128.png" class="brand-icon" alt="" />
+        <span data-i18n="appName">Audio Toolkit for YouTube</span>
+      </span>
       <span class="h1-right">
         <input type="checkbox" id="enabled" data-i18n-title="enableAll" title="전체 On/Off" />
         <button id="close" class="close-btn" data-i18n-title="close" title="닫기">✕</button>
