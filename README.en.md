@@ -16,6 +16,14 @@ Volume boost · compressor · mono merge · stereo balance — right inside the 
 
 ---
 
+## Preview
+
+<div align="center">
+  <img src="store/store-screenshot-1-1280x800.png" alt="Compressor (night mode) toggle button in the player control bar" width="760">
+  <br><br>
+  <img src="store/store-screenshot-2-640x400.png" alt="Popup for adjusting volume, balance, and mono" width="440">
+</div>
+
 ## Features
 
 | Feature | Description |

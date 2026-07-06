@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" font-family="'Apple SD Gothic Neo','AppleGothic','Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7f8fb"/>
+      <stop offset="1" stop-color="#e9ebf0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="400" fill="url(#bg2)"/>
+
+  <!-- 헤드라인 -->
+  <text x="320" y="52" text-anchor="middle" font-size="23" font-weight="700" fill="#111318">팝업에서 더 많은 설정으로 소리를 다듬어보세요</text>
+
+  <!-- 팝업 카드 -->
+  <rect x="178" y="78" width="284" height="292" rx="14" fill="#000000" opacity="0.14"/>
+  <rect x="178" y="72" width="284" height="292" rx="14" fill="#1c1c1e"/>
+
+  <!-- 헤더: 로고 막대 + 타이틀 -->
+  <g>
+    <rect x="196" y="99"  width="2.6" height="6"  rx="1.3" fill="#f2f2f2"/>
+    <rect x="200" y="96"  width="2.6" height="12" rx="1.3" fill="#f2f2f2"/>
+    <rect x="204" y="93"  width="2.6" height="18" rx="1.3" fill="#ff5c5c"/>
+    <rect x="208" y="97"  width="2.6" height="10" rx="1.3" fill="#f2f2f2"/>
+    <rect x="212" y="100" width="2.6" height="4"  rx="1.3" fill="#f2f2f2"/>
+  </g>
+  <text x="222" y="107" font-size="15" font-weight="700" fill="#ffffff">Audio Toolkit</text>
+  <!-- 전체 On 토글 체크 -->
+  <rect x="398" y="93" width="18" height="18" rx="4" fill="#ff5c5c"/>
+  <path d="M402 102 l3 3 l6 -6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 닫기 X -->
+  <path d="M427 96 l10 10 M437 96 l-10 10" stroke="#9a9a9a" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- 볼륨 부스트 -->
+  <text x="196" y="146" font-size="13" fill="#e6e6e6">볼륨 부스트</text>
+  <circle cx="264" cy="142" r="7" fill="#ffffff" opacity="0.2"/>
+  <text x="264" y="146" text-anchor="middle" font-size="10" font-weight="700" fill="#dddddd">?</text>
+  <text x="444" y="146" text-anchor="end" font-size="13" font-weight="700" fill="#ff5c5c">150%</text>
+  <rect x="196" y="159" width="248" height="5" rx="2.5" fill="#4a4a4d"/>
+  <rect x="196" y="159" width="124" height="5" rx="2.5" fill="#ff5c5c"/>
+  <circle cx="320" cy="161.5" r="8" fill="#ff5c5c"/>
+
+  <!-- 좌우 밸런스 -->
+  <text x="196" y="196" font-size="13" fill="#e6e6e6">좌우 밸런스</text>
+  <circle cx="264" cy="192" r="7" fill="#ffffff" opacity="0.2"/>
+  <text x="264" y="196" text-anchor="middle" font-size="10" font-weight="700" fill="#dddddd">?</text>
+  <text x="444" y="196" text-anchor="end" font-size="13" font-weight="700" fill="#ff5c5c">중앙</text>
+  <rect x="196" y="209" width="22" height="22" rx="6" fill="#ffffff" opacity="0.12"/>
+  <path d="M203 220 h8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <rect x="422" y="209" width="22" height="22" rx="6" fill="#ffffff" opacity="0.12"/>
+  <path d="M429 220 h8 M433 216 v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <rect x="228" y="217" width="186" height="5" rx="2.5" fill="#4a4a4d"/>
+  <circle cx="321" cy="219.5" r="8" fill="#ff5c5c"/>
+
+  <!-- 컴프레서 -->
+  <rect x="196" y="252" width="16" height="16" rx="3" fill="none" stroke="#8a8a8a" stroke-width="1.6"/>
+  <text x="220" y="264" font-size="13" fill="#e6e6e6">컴프레서 (야간 모드)</text>
+  <circle cx="360" cy="260" r="7" fill="#ffffff" opacity="0.2"/>
+  <text x="360" y="264" text-anchor="middle" font-size="10" font-weight="700" fill="#dddddd">?</text>
+
+  <!-- 모노 병합 -->
+  <rect x="196" y="286" width="16" height="16" rx="3" fill="none" stroke="#8a8a8a" stroke-width="1.6"/>
+  <text x="220" y="298" font-size="13" fill="#e6e6e6">모노 병합</text>
+  <circle cx="298" cy="294" r="7" fill="#ffffff" opacity="0.2"/>
+  <text x="298" y="298" text-anchor="middle" font-size="10" font-weight="700" fill="#dddddd">?</text>
+
+  <!-- 초기화 -->
+  <rect x="386" y="318" width="58" height="26" rx="6" fill="#ffffff" opacity="0.13"/>
+  <text x="415" y="335" text-anchor="middle" font-size="12" fill="#ffffff">초기화</text>
+
+  <!-- 하단 캡션 -->
+  <text x="320" y="390" text-anchor="middle" font-size="15" fill="#7b8090">볼륨 부스트 · 좌우 밸런스 · 모노 병합까지 세밀하게</text>
+</svg>

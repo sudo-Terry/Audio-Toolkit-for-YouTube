@@ -16,6 +16,14 @@
 
 ---
 
+## 미리보기
+
+<div align="center">
+  <img src="store/store-screenshot-1-1280x800.png" alt="재생바의 컴프레서(야간 모드) 토글 버튼" width="760">
+  <br><br>
+  <img src="store/store-screenshot-2-640x400.png" alt="볼륨·밸런스·모노를 조절하는 설정 팝업" width="440">
+</div>
+
 ## 기능
 
 | 기능 | 설명 |
