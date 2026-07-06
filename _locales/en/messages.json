@@ -1,0 +1,39 @@
+{
+  "appName": { "message": "Audio Toolkit for YouTube" },
+  "appDesc": {
+    "message": "Boost volume, tame loud sounds (night mode), merge to mono, and adjust stereo balance for YouTube audio. Not affiliated with YouTube or Google."
+  },
+
+  "volumeBoost": { "message": "Volume Boost" },
+  "stereoBalance": { "message": "Stereo Balance" },
+  "compressor": { "message": "Compressor (Night Mode)" },
+  "monoMerge": { "message": "Mono Merge" },
+  "reset": { "message": "Reset" },
+
+  "balanceCenter": { "message": "Center" },
+
+  "enableAll": { "message": "Enable / disable all" },
+  "close": { "message": "Close" },
+  "nudgeLeft": { "message": "Pan left by 5" },
+  "nudgeRight": { "message": "Pan right by 5" },
+
+  "popupHint": {
+    "message": "Applies live to the active YouTube tab. You can also toggle the compressor (night mode) from the equalizer icon next to the volume control in the player."
+  },
+
+  "tipBoost": {
+    "message": "Use this when a video is too quiet even at max volume — it goes past YouTube's 100% up to 200%."
+  },
+  "tipBalance": {
+    "message": "Re-centers the sound when it leans to one side. Use the left/right buttons for fine adjustments."
+  },
+  "tipCompressor": {
+    "message": "Turn this on when loud and quiet parts differ a lot. It tames sudden ad/effect spikes so you can listen comfortably at night."
+  },
+  "tipMono": {
+    "message": "Merges the left and right channels into one — handy with a single earbud or when the stereo mix feels off."
+  },
+
+  "compOn": { "message": "Compressor (night mode) is ON — click to turn off" },
+  "compOff": { "message": "Compressor (night mode) is OFF — click to turn on" }
+}

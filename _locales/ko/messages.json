@@ -1,0 +1,39 @@
+{
+  "appName": { "message": "Audio Toolkit for YouTube" },
+  "appDesc": {
+    "message": "유튜브 오디오에 볼륨 부스트, 컴프레서(야간 모드), 모노 병합, 좌우 밸런스를 적용하는 간편 음향 도구. YouTube/Google과 무관한 비공식 확장입니다."
+  },
+
+  "volumeBoost": { "message": "볼륨 부스트" },
+  "stereoBalance": { "message": "좌우 밸런스" },
+  "compressor": { "message": "컴프레서 (야간 모드)" },
+  "monoMerge": { "message": "모노 병합" },
+  "reset": { "message": "초기화" },
+
+  "balanceCenter": { "message": "중앙" },
+
+  "enableAll": { "message": "전체 On/Off" },
+  "close": { "message": "닫기" },
+  "nudgeLeft": { "message": "왼쪽으로 5" },
+  "nudgeRight": { "message": "오른쪽으로 5" },
+
+  "popupHint": {
+    "message": "유튜브 재생 중인 탭에 실시간 적용됩니다. 컴프레서(야간 모드)는 플레이어 컨트롤바 볼륨 옆의 이퀄라이저 아이콘으로도 켤 수 있어요."
+  },
+
+  "tipBoost": {
+    "message": "영상 소리 자체가 너무 작을 때 사용하세요. 유튜브 기본 100%를 넘어 최대 200%까지 키웁니다."
+  },
+  "tipBalance": {
+    "message": "소리가 한쪽으로 치우쳐 들릴 때 좌우 균형을 맞춥니다. 왼쪽/오른쪽 버튼으로 미세 조정할 수 있어요."
+  },
+  "tipCompressor": {
+    "message": "큰 소리와 작은 소리의 차이가 클 때 켜세요. 광고·효과음의 볼륨 튐을 눌러 밤에도 편하게 들을 수 있습니다."
+  },
+  "tipMono": {
+    "message": "좌우 채널을 하나로 합칩니다. 한쪽 이어폰만 끼거나, 좌우 분리가 어색한 영상에서 유용합니다."
+  },
+
+  "compOn": { "message": "컴프레서(야간 모드) 켜짐 — 클릭하여 끄기" },
+  "compOff": { "message": "컴프레서(야간 모드) 꺼짐 — 클릭하여 켜기" }
+}

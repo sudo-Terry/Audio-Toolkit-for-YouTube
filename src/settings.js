@@ -67,9 +67,4 @@
 
   /* 공용 유틸 */
   NS.clamp = (v, min, max) => Math.max(min, Math.min(max, v));
-
-  NS.balanceLabel = (v) => {
-    if (v === 0) return "중앙";
-    return v < 0 ? `L ${-v}` : `R ${v}`;
-  };
 })();

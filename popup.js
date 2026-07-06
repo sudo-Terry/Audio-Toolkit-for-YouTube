@@ -12,8 +12,26 @@ let settings = { ...DEFAULTS };
 
 const $ = (id) => document.getElementById(id);
 
+const t = (key) => chrome.i18n.getMessage(key) || key;
+
+// data-i18n / data-i18n-title / data-i18n-tip 속성을 현재 로케일 문자열로 치환
+function localize() {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const m = t(el.dataset.i18n);
+    if (m) el.textContent = m;
+  });
+  document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+    const m = t(el.dataset.i18nTitle);
+    if (m) el.title = m;
+  });
+  document.querySelectorAll("[data-i18n-tip]").forEach((el) => {
+    const m = t(el.dataset.i18nTip);
+    if (m) el.dataset.tip = m;
+  });
+}
+
 function balanceLabel(v) {
-  if (v === 0) return "중앙";
+  if (v === 0) return t("balanceCenter");
   return v < 0 ? `L ${-v}` : `R ${v}`;
 }
 
@@ -30,6 +48,8 @@ function render() {
 function save() {
   chrome.storage.local.set({ [STORAGE_KEY]: settings });
 }
+
+localize();
 
 chrome.storage.local.get(STORAGE_KEY, (res) => {
   if (res && res[STORAGE_KEY]) settings = { ...DEFAULTS, ...res[STORAGE_KEY] };

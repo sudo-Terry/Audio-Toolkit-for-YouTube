@@ -25,9 +25,7 @@
     const on = !!NS.settings.compressor;
     btn.classList.toggle("yat-on", on);
     btn.setAttribute("aria-pressed", on ? "true" : "false");
-    btn.title = on
-      ? "컴프레서(야간 모드) 켜짐 — 클릭하여 끄기"
-      : "컴프레서(야간 모드) 꺼짐 — 클릭하여 켜기";
+    btn.title = chrome.i18n.getMessage(on ? "compOn" : "compOff");
   }
 
   NS.injectButton = function () {

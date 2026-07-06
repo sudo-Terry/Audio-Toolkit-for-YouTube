@@ -20,7 +20,13 @@ src/
   main.js              # [격리] 진입점: init, SPA 네비게이션, storage 동기화, MAIN 월드 통신
   audio-engine.js      # [MAIN] Web Audio 그래프 구성/적용 (postMessage 로 설정 수신)
 popup.html / popup.js  # 툴바 아이콘 팝업 (볼륨·밸런스·모노·컴프레서 설정, storage 공유)
+_locales/ko|en/messages.json  # i18n 문자열 (default_locale: ko)
 ```
+
+- **문자열은 chrome.i18n 로 국제화한다.** manifest 의 name/description 은 `__MSG_appName__`
+  /`__MSG_appDesc__`, 코드에서는 `chrome.i18n.getMessage(key)`. popup.html 은 정적이라
+  `data-i18n`/`data-i18n-title`/`data-i18n-tip` 속성에 키를 달고 popup.js 의 `localize()`
+  가 치환한다(HTML 의 한국어 텍스트는 폴백). 새 문자열은 ko·en `messages.json` 양쪽에 추가.
 
 - **UI 는 두 갈래다.** 재생바에는 컴프레서(야간 모드) on/off **토글 버튼 하나만** 주입한다
   (`.ytp-left-controls` 의 볼륨 영역 오른쪽, 켜지면 `.yat-on` 으로 빨간색). 볼륨 부스트·좌우 밸런스·모노 등

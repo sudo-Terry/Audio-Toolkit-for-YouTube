@@ -149,38 +149,38 @@
     <h1>
       🎧 Audio Toolkit
       <span class="h1-right">
-        <input type="checkbox" id="enabled" title="전체 On/Off" />
-        <button id="close" class="close-btn" title="닫기">✕</button>
+        <input type="checkbox" id="enabled" data-i18n-title="enableAll" title="전체 On/Off" />
+        <button id="close" class="close-btn" data-i18n-title="close" title="닫기">✕</button>
       </span>
     </h1>
 
     <div class="row">
-      <label>볼륨 부스트 <span class="help" data-tip="영상 소리 자체가 너무 작을 때 사용하세요. 유튜브 기본 100%를 넘어 최대 200%까지 키웁니다.">?</span> <b id="boost-val">100%</b></label>
+      <label><span data-i18n="volumeBoost">볼륨 부스트</span> <span class="help" data-i18n-tip="tipBoost" data-tip="영상 소리 자체가 너무 작을 때 사용하세요. 유튜브 기본 100%를 넘어 최대 200%까지 키웁니다.">?</span> <b id="boost-val">100%</b></label>
       <input type="range" id="boost" min="100" max="200" step="5" value="100" />
     </div>
 
     <div class="row">
-      <label>좌우 밸런스 <span class="help" data-tip="소리가 한쪽으로 치우쳐 들릴 때 좌우 균형을 맞춥니다. 왼쪽/오른쪽 버튼으로 미세 조정할 수 있어요.">?</span> <b id="balance-val">중앙</b></label>
+      <label><span data-i18n="stereoBalance">좌우 밸런스</span> <span class="help" data-i18n-tip="tipBalance" data-tip="소리가 한쪽으로 치우쳐 들릴 때 좌우 균형을 맞춥니다. 왼쪽/오른쪽 버튼으로 미세 조정할 수 있어요.">?</span> <b id="balance-val">중앙</b></label>
       <div class="balance-ctrl">
-        <button class="nudge" id="bal-minus" title="왼쪽으로 5">−</button>
+        <button class="nudge" id="bal-minus" data-i18n-title="nudgeLeft" title="왼쪽으로 5">−</button>
         <input type="range" id="balance" min="-100" max="100" step="5" value="0" />
-        <button class="nudge" id="bal-plus" title="오른쪽으로 5">+</button>
+        <button class="nudge" id="bal-plus" data-i18n-title="nudgeRight" title="오른쪽으로 5">+</button>
       </div>
     </div>
 
     <div class="row check">
-      <label><input type="checkbox" id="compressor" /> 컴프레서 (야간 모드) <span class="help" data-tip="큰 소리와 작은 소리의 차이가 클 때 켜세요. 광고·효과음의 볼륨 튐을 눌러 밤에도 편하게 들을 수 있습니다.">?</span></label>
+      <label><input type="checkbox" id="compressor" /> <span data-i18n="compressor">컴프레서 (야간 모드)</span> <span class="help" data-i18n-tip="tipCompressor" data-tip="큰 소리와 작은 소리의 차이가 클 때 켜세요. 광고·효과음의 볼륨 튐을 눌러 밤에도 편하게 들을 수 있습니다.">?</span></label>
     </div>
 
     <div class="row check">
-      <label><input type="checkbox" id="mono" /> 모노 병합 <span class="help" data-tip="좌우 채널을 하나로 합칩니다. 한쪽 이어폰만 끼거나, 좌우 분리가 어색한 영상에서 유용합니다.">?</span></label>
+      <label><input type="checkbox" id="mono" /> <span data-i18n="monoMerge">모노 병합</span> <span class="help" data-i18n-tip="tipMono" data-tip="좌우 채널을 하나로 합칩니다. 한쪽 이어폰만 끼거나, 좌우 분리가 어색한 영상에서 유용합니다.">?</span></label>
     </div>
 
     <div class="row" style="text-align: right">
-      <button id="reset">초기화</button>
+      <button id="reset" data-i18n="reset">초기화</button>
     </div>
 
-    <p class="hint">유튜브 재생 중인 탭에 실시간 적용됩니다. 컴프레서(야간 모드)는 플레이어 컨트롤바 볼륨 옆의 이퀄라이저 아이콘으로도 켤 수 있어요.</p>
+    <p class="hint" data-i18n="popupHint">유튜브 재생 중인 탭에 실시간 적용됩니다. 컴프레서(야간 모드)는 플레이어 컨트롤바 볼륨 옆의 이퀄라이저 아이콘으로도 켤 수 있어요.</p>
 
     <script src="popup.js"></script>
   </body>
