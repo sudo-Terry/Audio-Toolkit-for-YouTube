@@ -2,9 +2,7 @@
 
 # 🎧 Audio Toolkit for YouTube
 
-**A Chrome extension that fine-tunes YouTube audio in real time**
-
-Volume boost · compressor · mono merge · stereo balance — right inside the player.
+**Shape YouTube's sound to your ears, right where you're watching**
 
 ![Manifest](https://img.shields.io/badge/Manifest-V3-4285F4)
 ![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E)
@@ -24,42 +22,46 @@ Volume boost · compressor · mono merge · stereo balance — right inside the 
   <img src="store/store-screenshot-2-640x400.png" alt="Popup for adjusting volume, balance, and mono" width="440">
 </div>
 
+## About
+
+Every YouTube video seems to have its own volume, and at night a sudden ad or sound effect sends you reaching for the volume again. Audio Toolkit for YouTube is a small, focused tool for exactly those moments. You can shape the sound right from the page you're already watching, and it starts working as soon as it's installed — no setup required.
+
 ## Features
 
-| Feature | Description |
+| Feature | When it helps |
 | --- | --- |
-| 🔊 **Volume Boost** | Amplify beyond YouTube's 100% cap, up to 200% |
-| 🌙 **Compressor (Night Mode)** | Tame loud peaks for comfortable late-night listening |
-| 🎚️ **Stereo Balance** | Adjust the L/R balance |
-| 🔉 **Mono Merge** | Collapse both channels to mono (for single-earbud use) |
-| ⏻ **Master On/Off** | Instantly revert to the original audio |
+| 🔊 **Volume Boost** | When the sound is still too quiet at max volume, it goes past 100% up to 200%. |
+| 🌙 **Compressor (Night Mode)** | Gently tames loud peaks so late-night ads and effects don't make you jump. |
+| 🎚️ **Stereo Balance** | Re-centers the sound when it leans to one side. |
+| 🔉 **Mono Merge** | Folds both channels into one so a single earbud still gives you the full mix. |
+| ⏻ **Master On/Off** | Drops everything back to the original audio whenever you want. |
 
 ## Installation
 
-1. Clone or download this repository
-2. Open `chrome://extensions` in Chrome
-3. Enable **Developer mode** (top right)
-4. Click **Load unpacked** and select this folder
+While the extension is still in review, you can load it yourself in developer mode.
+
+1. Clone this repository or download it as a ZIP.
+2. Open `chrome://extensions` in Chrome.
+3. Turn on **Developer mode** in the top-right corner.
+4. Click **Load unpacked** and pick this folder — that's it.
 
 ## Usage
 
-- **Compressor (night mode)** toggles right from the **compress icon button** in the player
-  control bar (turns red when on).
-- **Volume boost, stereo balance, and mono merge** are adjusted from the toolbar popup
-  (click the extension icon).
-- Both UIs share settings in real time. Hover the **`?` icon** next to each feature in the
-  popup for a short usage hint.
+Night mode is the setting you'll toggle most often, so it lives right on the player. Click the equalizer icon next to the volume control to switch the compressor on; while it's active, the icon stays red.
 
-## Tech
+Settings you tend to set once — volume boost, stereo balance, mono merge — live in the popup you get from the toolbar icon. Both surfaces share their state in real time, and hovering the `?` next to each option tells you when it's worth using.
 
-- **Manifest V3** · Vanilla JavaScript (no dependencies)
-- Taps `<video>` audio via the **Web Audio API**
-  `video → [compressor] → gain → panner → [mono] → destination`
+## How it works
+
+It's a Manifest V3 extension written in plain JavaScript, with no external libraries. Audio is handled through the Web Audio API by tapping the `<video>` element, and the signal flows in this order:
+
+```
+video → [compressor] → gain → panner → [mono] → destination
+```
 
 ## Privacy
 
-No user data is collected or transmitted. Settings are stored locally in your browser only.
-See the [Privacy Policy](PRIVACY.md) for details.
+Nothing about you is collected or sent anywhere. Your settings stay in your own browser and never leave it. The full details are in the [Privacy Policy](PRIVACY.md).
 
 ## License
 
