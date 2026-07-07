@@ -4,11 +4,14 @@
 
 **Shape YouTube's sound to your ears, right where you're watching**
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/jblkbgeldjiabofmekfpdcndpbpmjogd?label=Chrome%20Web%20Store&logo=googlechrome&logoColor=white&color=4285F4)](https://chromewebstore.google.com/detail/audio-toolkit-for-youtube/jblkbgeldjiabofmekfpdcndpbpmjogd)
+[![Users](https://img.shields.io/chrome-web-store/users/jblkbgeldjiabofmekfpdcndpbpmjogd?label=users&color=34A853)](https://chromewebstore.google.com/detail/audio-toolkit-for-youtube/jblkbgeldjiabofmekfpdcndpbpmjogd)
 ![Manifest](https://img.shields.io/badge/Manifest-V3-4285F4)
-![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 [한국어](README.md) · English
+
+### [🎧 Install from the Chrome Web Store](https://chromewebstore.google.com/detail/audio-toolkit-for-youtube/jblkbgeldjiabofmekfpdcndpbpmjogd)
 
 </div>
 
@@ -38,7 +41,9 @@ Every YouTube video seems to have its own volume, and at night a sudden ad or so
 
 ## Installation
 
-While the extension is still in review, you can load it yourself in developer mode.
+Add it straight from the [**Chrome Web Store**](https://chromewebstore.google.com/detail/audio-toolkit-for-youtube/jblkbgeldjiabofmekfpdcndpbpmjogd) with "Add to Chrome".
+
+Prefer to load it from source? Use developer mode:
 
 1. Clone this repository or download it as a ZIP.
 2. Open `chrome://extensions` in Chrome.

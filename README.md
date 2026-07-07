@@ -4,11 +4,14 @@
 
 **유튜브 소리를, 보던 화면에서 바로 내 귀에 맞게**
 
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/jblkbgeldjiabofmekfpdcndpbpmjogd?label=Chrome%20Web%20Store&logo=googlechrome&logoColor=white&color=4285F4)](https://chromewebstore.google.com/detail/audio-toolkit-for-youtube/jblkbgeldjiabofmekfpdcndpbpmjogd)
+[![Users](https://img.shields.io/chrome-web-store/users/jblkbgeldjiabofmekfpdcndpbpmjogd?label=%EC%82%AC%EC%9A%A9%EC%9E%90&color=34A853)](https://chromewebstore.google.com/detail/audio-toolkit-for-youtube/jblkbgeldjiabofmekfpdcndpbpmjogd)
 ![Manifest](https://img.shields.io/badge/Manifest-V3-4285F4)
-![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 한국어 · [English](README.en.md)
+
+### [🎧 Chrome 웹스토어에서 설치하기](https://chromewebstore.google.com/detail/audio-toolkit-for-youtube/jblkbgeldjiabofmekfpdcndpbpmjogd)
 
 </div>
 
@@ -38,7 +41,9 @@
 
 ## 설치
 
-아직 스토어 심사 단계라, 지금은 개발자 모드로 직접 불러와서 쓸 수 있습니다.
+[**Chrome 웹스토어**](https://chromewebstore.google.com/detail/audio-toolkit-for-youtube/jblkbgeldjiabofmekfpdcndpbpmjogd)에서 "Chrome에 추가"를 누르면 바로 사용할 수 있습니다.
+
+소스에서 직접 불러오고 싶다면 개발자 모드를 쓰면 됩니다.
 
 1. 이 저장소를 클론하거나 ZIP으로 내려받습니다.
 2. 크롬 주소창에 `chrome://extensions` 를 입력해 확장 관리 페이지를 엽니다.
