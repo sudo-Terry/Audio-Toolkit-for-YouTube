@@ -19,6 +19,25 @@
       <rect x="28" y="15"   width="4" height="6"  rx="2"></rect>
     </svg>`;
 
+  // 유튜브 레이아웃에 따라 컨트롤 버튼에 원형 배경이 있으면 우리 버튼도 같게 맞춘다.
+  // 이웃(음소거/재생) 버튼의 실제 배경색을 읽어(요소 및 ::before/::after) 적용한다.
+  // 호버로만 배경이 생기는 기본 레이아웃에서는 평상시 투명이라 chip 을 붙이지 않는다.
+  function matchNativeChip(btn, left) {
+    const ref =
+      left.querySelector(".ytp-mute-button") ||
+      left.querySelector(".ytp-play-button") ||
+      left.querySelector("button.ytp-button");
+    if (!ref) return;
+    for (const pseudo of [null, "::before", "::after"]) {
+      const bg = getComputedStyle(ref, pseudo).backgroundColor;
+      if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") {
+        btn.style.setProperty("--yat-chip-bg", bg);
+        btn.classList.add("yat-chip");
+        return;
+      }
+    }
+  }
+
   function updateButton(btn) {
     btn = btn || document.querySelector(".yat-comp-button");
     if (!btn) return;
@@ -37,6 +56,7 @@
     btn.className = "ytp-button yat-comp-button";
     btn.innerHTML = COMP_SVG;
     updateButton(btn);
+    matchNativeChip(btn, left);
 
     btn.addEventListener("click", (e) => {
       e.stopPropagation();

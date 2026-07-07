@@ -22,3 +22,13 @@
 .yat-comp-button.yat-on {
   color: #ff5c5c;
 }
+
+/* 일부 유튜브 레이아웃은 컨트롤 버튼에 원형 배경(chip)을 준다.
+   이웃 버튼에서 그런 배경이 감지되면(JS가 .yat-chip 부여) 아이콘에도 동일하게 입혀
+   주변과 어색하지 않게 맞춘다. 기본 레이아웃에서는 클래스가 없어 투명하게 유지된다. */
+.yat-comp-button.yat-chip svg {
+  background: var(--yat-chip-bg, rgba(0, 0, 0, 0.5));
+  border-radius: 50%;
+  padding: 8px;
+  box-sizing: content-box;
+}
