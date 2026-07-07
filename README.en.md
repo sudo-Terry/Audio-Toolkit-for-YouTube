@@ -20,9 +20,9 @@
 ## Preview
 
 <div align="center">
-  <img src="store/store-screenshot-1-1280x800.png" alt="Compressor (night mode) toggle button in the player control bar" width="760">
+  <img src="store/store-screenshot-1-en-1280x800.png" alt="Compressor (night mode) toggle button in the player control bar" width="760">
   <br><br>
-  <img src="store/store-screenshot-2-640x400.png" alt="Popup for adjusting volume, balance, and mono" width="440">
+  <img src="store/store-screenshot-2-en-640x400.png" alt="Popup for adjusting volume, balance, and mono" width="440">
 </div>
 
 ## About
