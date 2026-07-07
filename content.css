@@ -1,34 +1,53 @@
-/* Audio Toolkit for YouTube — 컨트롤바 컴프레서 토글 버튼 */
-
-/* 버튼을 flex 로 만들어 아이콘을 세로/가로 중앙에 확실히 정렬한다.
-   (기본 인라인 SVG 는 baseline 에 걸려 아래로 쏠린다.) */
-.yat-comp-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: top;
+/* Audio Toolkit for YouTube — 컨트롤바 컴프레서 토글 버튼
+ * 유튜브(delhi-modern) 재생 버튼 스타일을 참고:
+ *   - 버튼: 어둡고 반투명한 원형 배경 (영상 위에서 드러나고, 검은 컨트롤바 위에선 묻힘)
+ *   - ::after: 평상시 투명 → hover 시 안쪽 밝은 원(바깥은 어두운 테두리) → active 시 더 밝게
+ * 유튜브의 `.ytp-delhi-modern .ytp-button`(클래스 2개) 규칙에 덮이지 않도록
+ * 선택자를 `.ytp-button.yat-comp-button`(2개)로 높이고 시각 속성엔 !important 를 준다.
+ * 크기는 ui-panel.js 가 네이티브 버튼 값을 복사 + ResizeObserver 로 재동기화한다.
+ */
+.ytp-button.yat-comp-button {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  /* .ytp-button 의 좌우 padding(0 2px)을 제거 — 그대로 두면 아이콘이 2px 오른쪽으로 치우친다. */
+  padding: 0 !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: none !important;
+  border-radius: 50% !important;
   color: #fff;
+  cursor: pointer;
   transition: color 0.1s;
 }
-.yat-comp-button svg {
+
+/* 아이콘 (맨 위). width + padding = 버튼 크기 (JS 가 네이티브 값 지정). */
+.ytp-button.yat-comp-button svg {
   display: block;
-  width: 24px;
-  height: 24px;
-}
-.yat-comp-button:hover {
-  color: #ddd;
-}
-/* 켜졌을 때: 빨간색으로 상태 표시 */
-.yat-comp-button.yat-on {
-  color: #ff5c5c;
+  box-sizing: content-box;
+  position: relative;
+  z-index: 2;
 }
 
-/* 일부 유튜브 레이아웃은 컨트롤 버튼에 원형 배경(chip)을 준다.
-   이웃 버튼에서 그런 배경이 감지되면(JS가 .yat-chip 부여) 아이콘에도 동일하게 입혀
-   주변과 어색하지 않게 맞춘다. 기본 레이아웃에서는 클래스가 없어 투명하게 유지된다. */
-.yat-comp-button.yat-chip svg {
-  background: var(--yat-chip-bg, rgba(0, 0, 0, 0.5));
+/* hover/active 하이라이트 — 유튜브가 ::before/::after 를 자체 용도(prev/next 표시 등)로
+   이미 쓰기 때문에 pseudo 는 충돌한다. 실제 자식 span(.yat-hl)을 하이라이트 레이어로 사용.
+   어두운 원 안쪽에만 떠서 바깥은 어두운 테두리로 남는다. */
+.ytp-button.yat-comp-button .yat-hl {
+  position: absolute;
+  inset: 10%;
   border-radius: 50%;
-  padding: 8px;
-  box-sizing: content-box;
+  background: transparent;
+  transition: background 0.15s;
+  z-index: 1;
+  pointer-events: none;
+}
+.ytp-button.yat-comp-button:hover .yat-hl {
+  background: rgba(255, 255, 255, 0.15);
+}
+.ytp-button.yat-comp-button:active .yat-hl {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* 켜졌을 때: 빨간색으로 상태 표시 */
+.ytp-button.yat-comp-button.yat-on {
+  color: #ff5c5c !important;
 }
